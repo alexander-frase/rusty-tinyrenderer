@@ -41,9 +41,24 @@ fn line(ax: u32, ay: u32, bx: u32, by: u32, img: &mut RgbImage, color: Color) {
     }
 }
 
+fn triangle(
+    ax: u32,
+    ay: u32,
+    bx: u32,
+    by: u32,
+    cx: u32,
+    cy: u32,
+    img: &mut RgbImage,
+    color: Color,
+) {
+    line(ax, ay, bx, by, img, color);
+    line(bx, by, cx, cy, img, color);
+    line(cx, cy, ax, ay, img, color);
+}
+
 fn main() {
-    const WIDTH: u32 = 64;
-    const HEIGHT: u32 = 64;
+    const WIDTH: u32 = 128;
+    const HEIGHT: u32 = 128;
 
     let mut img = RgbImage::new(WIDTH, HEIGHT);
 
@@ -51,15 +66,11 @@ fn main() {
     let (bx, by) = (12, 27);
     let (cx, cy) = (62, 11);
 
-    line(ax, ay, bx, by, &mut img, BLUE);
-    line(cx, cy, bx, by, &mut img, GREEN);
-    line(cx, cy, ax, ay, &mut img, YELLOW);
-    line(ax, ay, cx, cy, &mut img, RED);
+    triangle(7, 45, 35, 100, 45, 60, &mut img, RED);
 
-    img.put_pixel(ax, ay, image::Rgb(WHITE));
-    img.put_pixel(bx, by, image::Rgb(WHITE));
-    img.put_pixel(cx, cy, image::Rgb(WHITE));
+    triangle(120, 35, 90, 5, 45, 110, &mut img, WHITE);
 
+    triangle(115, 83, 80, 90, 85, 120, &mut img, GREEN);
     // We have to flip the image, because the tutorial assumes the origin (0,0) is at the bottom-left corner
     // flip_vertical_in_place(&mut img);
 
