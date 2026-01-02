@@ -1,4 +1,5 @@
 use image::RgbImage;
+use image::imageops::flip_vertical_in_place;
 
 const WHITE: [u8; 3] = [255, 255, 255];
 const GREEN: [u8; 3] = [0, 255, 0];
@@ -19,6 +20,9 @@ fn main() {
     img.put_pixel(ax, ay, image::Rgb(RED));
     img.put_pixel(bx, by, image::Rgb(GREEN));
     img.put_pixel(cx, cy, image::Rgb(BLUE));
+
+    // We have to flip the image, because the tutorial assumes the origin (0,0) is at the bottom-left corner
+    flip_vertical_in_place(&mut img);
 
     img.save("output.png").unwrap();
 }
