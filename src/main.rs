@@ -228,34 +228,9 @@ fn main() {
             }
         }
     } else {
-        // Default: render test triangles
-        triangle(7, 45, 0.0, 35, 100, 0.0, 45, 60, 0.0, &mut framebuffer, RED);
-        triangle(
-            120,
-            35,
-            50.0,
-            90,
-            5,
-            50.0,
-            45,
-            110,
-            50.0,
-            &mut framebuffer,
-            WHITE,
-        );
-        triangle(
-            115,
-            83,
-            100.0,
-            80,
-            90,
-            100.0,
-            85,
-            120,
-            100.0,
-            &mut framebuffer,
-            GREEN,
-        );
+        eprintln!("Error: No OBJ file specified. Use -o <path> to specify a model.");
+        eprintln!("Usage: cargo run -- -o ./models/model.obj");
+        return;
     }
 
     // Convert framebuffer to image and save
