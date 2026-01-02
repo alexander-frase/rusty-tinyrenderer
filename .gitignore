@@ -25,5 +25,8 @@ target
 
 /target
 
-# Ignore image files
+# Ignore image files (except in assets folder for documentation)
 *.png
+!assets/*.png
+*.jpg
+!assets/*.jpg
